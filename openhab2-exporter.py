@@ -15,12 +15,14 @@ def get_metrics():
     ts = int(round(time.time() * 1000))
 
     numbers = [ item for item in obj if item['type'].lower() == 'number' ]
+    temperatures = [ item for item in obj if item['type'].lower() == 'number:temperature' ]
     dimmers = [ item for item in obj if item['type'].lower() == 'dimmer' ]
     switches = [ item for item in obj if item['type'].lower() == 'switch' ]
     contacts = [ item for item in obj if item['type'].lower() == 'contact' ]
 
     res = ''
     res = res + print_metrics(numbers, 'number', ts)
+    res = res + print_metrics(temperatures, 'temperatures', ts)
     res = res + print_metrics(dimmers, 'dimmer', ts)
     res = res + print_metrics(switches, 'switch', ts)
     res = res + print_metrics(contacts, 'contact', ts)
