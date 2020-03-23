@@ -23,7 +23,7 @@ def get_metrics():
 
     res = ''
     res = res + print_metrics(numbers, 'number', ts)
-    res = res + print_metrics(temperatures, 'temperatures', ts)
+    res = res + print_metrics(temperatures, 'number', ts)
     res = res + print_metrics(dimmers, 'dimmer', ts)
     res = res + print_metrics(switches, 'switch', ts)
     res = res + print_metrics(contacts, 'contact', ts)
