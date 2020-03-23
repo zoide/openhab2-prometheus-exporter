@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import time
+import re
 
 
 def get_metrics():
@@ -46,6 +47,11 @@ def print_metrics(metrics, type, timestamp):
             value = 1 if value == 'ON' else 0
         elif metric['type'].lower() == 'contact':
             value = 1 if value == 'OPEN' else 0
+        #Temperature numbers need to be parsed
+        elif metric['type'].lower() == 'number:temperature':
+            pat = re.compile(r"(\d+\.?\d+)")
+            mat = pat.search(value)
+            value = mat.group(0)
 
         res = res + metric_name + '{name="' + name + '"} ' + '{} {}\n'.format(value, timestamp)
 
