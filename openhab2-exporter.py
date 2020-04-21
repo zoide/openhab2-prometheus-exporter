@@ -51,7 +51,7 @@ def print_metrics(metrics, type, timestamp):
         elif metric['type'].lower() == 'number:temperature':
             pat = re.compile(r"(\d+\.?\d+)")
             mat = pat.search(value)
-            if variable is not None:
+            if mat is not None:
                 value = mat.group(0)
 
         res = res + metric_name + '{name="' + name + '"} ' + '{} {}\n'.format(value, timestamp)
