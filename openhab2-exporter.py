@@ -49,7 +49,7 @@ def print_metrics(metrics, type, timestamp):
             value = 1 if value == 'OPEN' else 0
         #Temperature numbers need to be parsed
         elif metric['type'].lower() == 'number:temperature':
-            pat = re.compile(r"(\d+\.?\d+)")
+            pat = re.compile(r"(\d+[\.\d{1,2}]?)")
             mat = pat.search(value)
             if mat is not None:
                 value = mat.group(0)
